@@ -8,7 +8,15 @@ const express = require('express');
 const app = express();
 
 // Allows for adding middleware
-app.use((req, res, next) => {});
+app.use((req, res, next) => {
+  console.log(app);
+  next();
+});
+
+// Next allows us to get to the next middleware
+app.use((req, res, next) => {
+  console.log('Thats an express object');
+});
 
 // An express object is a valid requestHandler
 const server = http.createServer(app);
