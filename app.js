@@ -8,12 +8,17 @@ const express = require('express');
 const app = express();
 
 //Allows for adding middleware
-app.use('/test-path', (req, res, next) => {
-  console.log(app);
+// Next() allows us to get to the next middleware
+app.use((req, res, next) => {
+  console.log('I always run');
   next();
 });
 
-// Next allows us to get to the next middleware
+// Don't use next if returning a response
+app.use('/test-path', (req, res, next) => {
+  res.send('<h1>Testing</h1>');
+});
+
 // res.send allows us to send a response and attach a body of type any
 // '/' is the default path if not specified
 app.use('/', (req, res, next) => {
