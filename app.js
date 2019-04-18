@@ -31,7 +31,8 @@ app.use('/test-path', (req, res, next) => {
 // can access the body with req.body
 // must parse body first with body-parser
 // Make sure body-parser is installed as a middleware
-app.use('/test-landing', (req, res, next) => {
+// Can use get/post etc instead of use to filter for the specified requests only
+app.post('/test-landing', (req, res, next) => {
   console.log(req.body);
   res.redirect();
 });
