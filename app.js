@@ -14,8 +14,10 @@ app.use((req, res, next) => {
 });
 
 // Next allows us to get to the next middleware
+// res.send allows us to send a response and attach a body of type any
 app.use((req, res, next) => {
   console.log('Thats an express object');
+  res.send('<h1>yo</h1>');
 });
 
 // An express object is a valid requestHandler
