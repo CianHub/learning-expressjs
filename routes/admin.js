@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Don't use next if returning a response
 // Can only use 1 res.send() in a middleware
-router.use('/add-product', (req, res, next) => {
+router.get('/add-product', (req, res, next) => {
   res.send(
     '<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Submit</button></form>'
   );

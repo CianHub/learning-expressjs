@@ -21,10 +21,18 @@ app.use((req, res, next) => {
 });
 
 // Can use an imported router object as a middleware
-app.use(adminRoutes);
+// Adds /admin to each route in adminRoutes
+app.use('/admin', adminRoutes);
 
 // Can use an imported router object as a middleware
-app.use(shopRoutes);
+app.use('/shop', shopRoutes);
+
+// Put an error page last always
+// res.status will send a status code
+// Can chain m
+app.use((req, res, next) => {
+  res.status(404).send('<h1>Page Not Found</h1>');
+});
 
 // An express object is a valid requestHandler
 // Listen method combines nodes http create server and listen methods into one
