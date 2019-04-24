@@ -15,6 +15,9 @@ const app = express();
 // Will parse the body automatically
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// the static built in node moduke let use static files , the folder spcified is granted read only access
+app.use(express.static(path.join(__dirname, 'public')));
+
 //Allows for adding middleware
 // Next() allows us to get to the next middleware
 app.use((req, res, next) => {
@@ -26,7 +29,7 @@ app.use((req, res, next) => {
 app.use('/admin', adminRoutes);
 
 // Can use an imported router object as a middleware
-app.use('/shop', shopRoutes);
+app.use('/', shopRoutes);
 
 // Put an error page last always
 // res.status will send a status code
