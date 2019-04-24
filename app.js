@@ -1,6 +1,7 @@
 // Third party packages
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 // Project packages
 const adminRoutes = require('./routes/admin');
@@ -29,9 +30,9 @@ app.use('/shop', shopRoutes);
 
 // Put an error page last always
 // res.status will send a status code
-// Can chain m
+// Can chain methods
 app.use((req, res, next) => {
-  res.status(404).send('<h1>Page Not Found</h1>');
+  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 // An express object is a valid requestHandler

@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 // Creates a router object which can be exported
 // Its a bit like a mini Express app that can be plugged into the main express app
@@ -8,9 +9,7 @@ const router = express.Router();
 // Don't use next if returning a response
 // Can only use 1 res.send() in a middleware
 router.get('/add-product', (req, res, next) => {
-  res.send(
-    '<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Submit</button></form>'
-  );
+  res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
 });
 
 // res.redirect combines node redirect methods in one method
