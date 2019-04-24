@@ -5,11 +5,12 @@ const path = require('path');
 // Its a bit like a mini Express app that can be plugged into the main express app
 // Contains all the post, get etc methods
 const router = express.Router();
+const rootDir = require('../utils/path');
 
 // Don't use next if returning a response
 // Can only use 1 res.send() in a middleware
 router.get('/add-product', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
+  res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
 });
 
 // res.redirect combines node redirect methods in one method
